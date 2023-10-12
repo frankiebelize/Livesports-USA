@@ -201,3 +201,15 @@
 .team-name {
     width: 100px;
 }
+
+.social-media {
+    font-size: 20px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.social-media p {
+    margin-left: 30px;
+    margin-right: 30px;
+}
