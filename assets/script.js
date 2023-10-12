@@ -182,5 +182,26 @@ document.addEventListener('DOMContentLoaded', function () {
         });
     }
   
+async function standings() {
+    const url = 'https://nba-standings.p.rapidapi.com/standings?season=2023';
+const options = {
+	method: 'GET',
+	headers: {
+		'X-RapidAPI-Key': '352f473677msh15fcdcfb9fa9a96p13d723jsn7de1e008d65e',
+		'X-RapidAPI-Host': 'nba-standings.p.rapidapi.com'
+	}
+};
+
+try {
+	const response = await fetch(url, options);
+	const result = await response.text();
+	console.log(result);
+} catch (error) {
+	console.error(error);
+}
+}
+
+
+standings();
     fetchNBADataByTeam('20');
 });
