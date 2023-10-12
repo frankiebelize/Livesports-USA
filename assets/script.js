@@ -189,3 +189,4 @@ document.addEventListener('DOMContentLoaded', function () {
   
     fetchNBADataByTeam('20');
 });
+
