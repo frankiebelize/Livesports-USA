@@ -2,7 +2,7 @@
     font-family: 'Poppins';
 }
 
-.navbar {
+.content .navbar {
     background-color: #333333;
     display: flex;
     height: 15vh;
