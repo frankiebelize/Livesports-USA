@@ -175,20 +175,29 @@
     box-shadow: 0 6px 12px rgba(0,0,0,0.15);
 }
 
-.vs {
-    font-size: 18px;
+.time {
+    font-size: 12px;
     font-weight: bold;
     text-align: center;
-    width: 10%;
-    height: 30%;
+    width: 15%;
+    height: 50%;
 }
 
 .team {
     display: flex;
     flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    width: 150px;
+    height: 100%;
 }
 
 .team-logo {
-    width: 40px;
-    height: 40px;
+    width: 38.4px;
+    height: 32px;
+    
+}
+
+.team-name {
+    width: 100px;
 }
