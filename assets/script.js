@@ -59,6 +59,11 @@ document.addEventListener('DOMContentLoaded', function () {
             displayGames(upcomingGames.slice(0, 6));
         })
         .catch(handleError);
+
+        const hiddenElements = document.querySelectorAll('.hidden');
+        hiddenElements.forEach(element => {
+          element.classList.remove('hidden'); // Remove the 'hidden' class
+        });
     }
 
     function handleResponse(response) {
