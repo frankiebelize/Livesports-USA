@@ -1,21 +1,40 @@
-var searchFormEl = document.querySelectorAll('#search');
-var btnEl = document.querySelector('.btn');
-function handleSearchFormSubmit(event) {
-    event.preventDefault();
-  
-    var searchInputVal = document.querySelector('#search-input').value;
-    var formatInputVal = document.querySelector('#format-input').value;
-  console.log(searchInputVal)
-  console.log(formatInputVal)
-    if (!searchInputVal) {
-      console.error('You need a search input value!');
-      return;
-    }
-  
-    var queryString = './search-results.html?q=' + searchInputVal + '&format=' + formatInputVal;
-  
-    location.assign(queryString);
+document.addEventListener('DOMContentLoaded', function () {
+  const rapidApiKey = '352f473677msh15fcdcfb9fa9a96p13d723jsn7de1e008d65e';
+
+  // Function to fetch NBA data by team
+  function fetchNBADataByTeam(teamName) {
+      const apiUrl = 'https://api-nba-v1.p.rapidapi.com/games';
+
+      const queryParams = {
+          league: 'standard',
+          season: '2023',
+          team: teamName,
+      };
+
+      const queryString = new URLSearchParams(queryParams).toString();
+
+      // Make a fetch request
+      fetch(`${apiUrl}?${queryString}`, {
+          method: 'GET',
+          headers: {
+            'X-RapidAPI-Key': '352f473677msh15fcdcfb9fa9a96p13d723jsn7de1e008d65e',
+            'X-RapidAPI-Host': 'api-nba-v1.p.rapidapi.com'
+          },
+      })
+      .then(response => {
+          if (!response.ok) {
+              throw new Error(`HTTP error! Status: ${response.status}`);
+          }
+          return response.json();
+      })
+      .then(data => {
+
+          console.log(data);
+      })
+      .catch(error => {
+          console.error('Error fetching NBA data:', error);
+      });
   }
-  
-  btnEl.addEventListener('submit', handleSearchFormSubmit);
-  
+
+  fetchNBADataByTeam('1');
+});
