@@ -1,7 +1,7 @@
 
 
 document.addEventListener('DOMContentLoaded', function () {
-    const rapidApiKey = '352f473677msh15fcdcfb9fa9a96p13d723jsn7de1e008d65e';
+    const rapidApiKey = 'c61023df98msh6f7beb0d10d6a8ep10dbc9jsn8be2ac7f5b08';
     const searchBtn = document.querySelector('.search-btn');
     const searchInput = document.querySelector('.search-input');
     const gameContainer = document.querySelector('.past-games');
@@ -9,22 +9,36 @@ document.addEventListener('DOMContentLoaded', function () {
     const teamNameToIdMapping = {
         "Atlanta Hawks": 1,
         "Boston Celtics": 2,
-        "Los Angeles Lakers": 17,
-        "Orlando Magic": 26,
-        "Chicago Bulls": 6,
         "Brooklyn Nets": 4,
-        "Cleveland Cavaliers": 7,
-        "Portland Trail Blazers": 29,
-        "Utah Jazz": 40,
-        "Phoenix Suns": 28,
-        "Dallas Mavericks": 8,
         "Charlotte Hornets": 5,
+        "Chicago Bulls": 6,
+        "Cleveland Cavaliers": 7,
+        "Dallas Mavericks": 8,
+        "Denver Nuggets": 9,
+        "Detroit Pistons": 10,
+        "Golden State Warriors": 11,
+        "Houston Rockets": 14,
+        "Indiana Pacers": 15,
+        "LA Clippers": 16,
+        "Los Angeles Lakers": 17,
+        "Memphis Grizzlies": 19,
         "Miami Heat": 20,
         "Milwaukee Bucks": 21,
-        "Houston Rockets": 14,
+        "Minnesota Timberwolves": 22,
+        "New Orleans Pelicans": 23,
+        "New York Knicks": 24,
+        "Oklahoma City Thunder": 25,
+        "Orlando Magic": 26,
+        "Philadelphia 76ers": 27,
+        "Phoenix Suns": 28,
+        "Portland Trail Blazers": 29,
+        "Sacramento Kings": 30,
         "San Antonio Spurs": 31,
-        "Detroit Pistons": 10
+        "Toronto Raptors": 38,
+        "Utah Jazz": 40,
+        "Washington Wizards": 41,
     };
+    
 
     searchBtn.addEventListener('click', () => {
         const teamName = searchInput.value.trim();
@@ -152,7 +166,7 @@ document.addEventListener('DOMContentLoaded', function () {
 });
 
 document.addEventListener('DOMContentLoaded', function () {
-    const rapidApiKey = '352f473677msh15fcdcfb9fa9a96p13d723jsn7de1e008d65e';
+    const rapidApiKey = 'c61023df98msh6f7beb0d10d6a8ep10dbc9jsn8be2ac7f5b08';
   
     // Function to fetch NBA data by team
     function fetchNBADataByTeam(teamName) {
@@ -170,7 +184,7 @@ document.addEventListener('DOMContentLoaded', function () {
         fetch(`${apiUrl}?${queryString}`, {
             method: 'GET',
             headers: {
-              'X-RapidAPI-Key': '352f473677msh15fcdcfb9fa9a96p13d723jsn7de1e008d65e',
+              'X-RapidAPI-Key': 'c61023df98msh6f7beb0d10d6a8ep10dbc9jsn8be2ac7f5b08',
               'X-RapidAPI-Host': 'api-nba-v1.p.rapidapi.com'
             },
         })
@@ -189,27 +203,6 @@ document.addEventListener('DOMContentLoaded', function () {
         });
     }
   
-async function standings() {
-    const url = 'https://nba-standings.p.rapidapi.com/standings?season=2023';
-const options = {
-	method: 'GET',
-	headers: {
-		'X-RapidAPI-Key': '352f473677msh15fcdcfb9fa9a96p13d723jsn7de1e008d65e',
-		'X-RapidAPI-Host': 'nba-standings.p.rapidapi.com'
-	}
-};
-
-try {
-	const response = await fetch(url, options);
-	const result = await response.text();
-	console.log(result);
-} catch (error) {
-	console.error(error);
-}
-}
-
-
-standings();
-    fetchNBADataByTeam('20');
+    fetchNBADataByTeam('41');
 });
 
