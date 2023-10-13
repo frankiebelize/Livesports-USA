@@ -2,6 +2,8 @@
     font-family: 'Poppins';
 }
 
+/* Display and color for navbar */
+
 .content .navbar {
     background-color: #333333;
     display: flex;
@@ -15,16 +17,22 @@
     height: 100%;
 }
 
+/* Logo styling */
+
 .navbar-item img {
     height: 30%; 
     width: 45vh; 
     max-height: none;
 }
 
+/* Stacking search content in a column */
+
 .navbar-item .search-container {
     display: flex;
     flex-direction: column;
 }
+
+
 
 .nav-txt-container {
     display: flex;
@@ -37,11 +45,15 @@
     color: white;
 }
 
+/* Slogan */
+
 .navbar-center h2 {
     height: 100%;
     width: 70vh;
     color: white;
 }
+
+/* Display and sizing for search container */
 
 .search-container {
     display: flex;
@@ -55,6 +67,8 @@
     padding-right: 5rem;    
 }
 
+/* Display and sizing for search input field */
+
 .search-input {
     display: flex;
     width: 300px;
@@ -64,6 +78,8 @@
     border-radius: 4px;
     border: 1px solid #ccc;
 }
+
+/* Display , coloring, transition for button */
 
 .search-btn {
     display: flex;
@@ -80,6 +96,8 @@
     }
 }
 
+/* Nav bar, was going to be a league section but wouldve been torture, so become social media link */
+
 .league-item {
     border-right: 1px solid white;
     padding: 0 10px;
@@ -93,6 +111,8 @@
     text-decoration: none;
     font-size: 30px;
 }
+
+/* Right side nav bar sizing and hover */
 
 .navbar-end {
     margin-right: 70px;
@@ -110,7 +130,9 @@
     padding-top: 10px;
 }
 
-.past-games {
+/* Upcoming games container */
+
+.upcoming-games {
     width: 600px;
     height: 600px;
     border-left: 1px solid #000;
@@ -132,6 +154,8 @@
     max-width: 80%
 }
 
+/* Social media section, took too long to do so just made it instruction box */
+
 .upcoming-social {
     display: flex;
     flex-direction: column;
@@ -146,6 +170,8 @@
     border-bottom: 1px solid #000;
 }
 
+/* Top 3 standings container */
+
 .standings {
     width: 100%;
     height: 50%;
@@ -155,6 +181,8 @@
     display: flex;
     flex-direction: row;
 }
+
+/* Box container styling , sizing, transform, and alignment to display standings and upcoming games */
 
 .game-box {
     width: 80%;
@@ -175,6 +203,8 @@
     box-shadow: 0 6px 12px rgba(0,0,0,0.15);
 }
 
+/* Styling for date and time text */
+
 .time {
     font-size: 12px;
     font-weight: bold;
@@ -191,6 +221,8 @@
     width: 150px;
     height: 100%;
 }
+
+/* Team logo sizing */
 
 .team-logo {
     width: 38.4px;
@@ -214,15 +246,21 @@
     margin-right: 30px;
 }
 
+/* To hide the elements until team is searched */
+
 .hidden {
     display: none;
  }
-  
+ 
+ /* Standings container display and direction */
+
  .standings {
     display: flex;
     flex-direction: column;
     justify-content: space-evenly;
  }
+
+ /* Standing box is box from earlier, just slightly altered in size */
 
  .standings-box {
     width: 80%;
@@ -237,6 +275,8 @@
     justify-content: space-evenly;
     align-items: center;
 }
+
+/* Logo in standings style */
 
 .standings-box img {
     max-width: 100%;

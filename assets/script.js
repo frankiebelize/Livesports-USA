@@ -1,10 +1,11 @@
 
-
 document.addEventListener('DOMContentLoaded', function () {
     const rapidApiKey = 'c61023df98msh6f7beb0d10d6a8ep10dbc9jsn8be2ac7f5b08';
     const searchBtn = document.querySelector('.search-btn');
     const searchInput = document.querySelector('.search-input');
     const gameContainer = document.querySelector('.past-games');
+
+    /* Bank for team name to id */
 
     const teamNameToIdMapping = {
         "Atlanta Hawks": 1,
@@ -39,6 +40,7 @@ document.addEventListener('DOMContentLoaded', function () {
         "Washington Wizards": 41,
     };
     
+    /* Matching team name to id once search bar is clicked */
 
     searchBtn.addEventListener('click', () => {
         const teamName = searchInput.value.trim();
@@ -50,6 +52,8 @@ document.addEventListener('DOMContentLoaded', function () {
             console.error("Team name not found in the dataset");
         }
     });
+
+    /* Gathering data with given id */
 
     function fetchNBADataByTeam(teamId) {
         const apiUrl = 'https://api-nba-v1.p.rapidapi.com/games';
@@ -104,6 +108,8 @@ document.addEventListener('DOMContentLoaded', function () {
         });
     }
 
+    /* Creating elements inside of the gamebox */
+
     function createGameBox(game, gameNumber) {
         const gameBox = document.createElement('div');
         gameBox.classList.add('game-box');
@@ -119,6 +125,8 @@ document.addEventListener('DOMContentLoaded', function () {
 
         return gameBox;
     }
+
+    /* Appending the data to the box , with a 'team data missing' catch incase of error */
 
     function createTeamElement(team, gameNumber, teamNumber) {
         const teamElement = document.createElement('div');
@@ -147,6 +155,8 @@ document.addEventListener('DOMContentLoaded', function () {
         return teamElement;
     }
 
+    /* Formatting the time in data file so its more readable */
+
     function createTimeElement(startTime) {
         const timeDiv = document.createElement('div');
         timeDiv.classList.add('time');
@@ -164,6 +174,9 @@ document.addEventListener('DOMContentLoaded', function () {
     }
 
 });
+
+/* This was a function that console logs the team for id, so I could make the team:id bank in the beginning.
+I went through every number to get the team. Was awesome! (not really) */
 
 document.addEventListener('DOMContentLoaded', function () {
     const rapidApiKey = 'c61023df98msh6f7beb0d10d6a8ep10dbc9jsn8be2ac7f5b08';
@@ -206,3 +219,27 @@ document.addEventListener('DOMContentLoaded', function () {
     fetchNBADataByTeam('41');
 });
 
+/* Console logging data for standing */
+
+const url = 'https://api-basketball.p.rapidapi.com/standings?league=12&season=2023-2024';
+const options = {
+  method: 'GET',
+  headers: {
+    'X-RapidAPI-Key': 'c61023df98msh6f7beb0d10d6a8ep10dbc9jsn8be2ac7f5b08',
+    'X-RapidAPI-Host': 'api-basketball.p.rapidapi.com',
+  },
+};
+
+fetch(url, options)
+  .then((response) => {
+    if (!response.ok) {
+      throw new Error('Network response was not ok');
+    }
+    return response.json();
+  })
+  .then((data) => {
+    console.log(data);
+  })
+  .catch((error) => {
+    console.error('There was a problem with the fetch operation:', error);
+  });
