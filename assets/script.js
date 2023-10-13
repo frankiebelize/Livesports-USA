@@ -3,7 +3,7 @@ document.addEventListener('DOMContentLoaded', function () {
     const rapidApiKey = 'c61023df98msh6f7beb0d10d6a8ep10dbc9jsn8be2ac7f5b08';
     const searchBtn = document.querySelector('.search-btn');
     const searchInput = document.querySelector('.search-input');
-    const gameContainer = document.querySelector('.past-games');
+    const gameContainer = document.querySelector('.upcoming-games');
 
     /* Bank for team name to id */
 
@@ -219,27 +219,66 @@ document.addEventListener('DOMContentLoaded', function () {
     fetchNBADataByTeam('41');
 });
 
-/* Console logging data for standing */
+/* This is the 2nd API for the standings, if it doesnt work usually its just an issue with too many requests.
+this can be fixed with a diff subscription, but ultimately it works */
 
-const url = 'https://api-basketball.p.rapidapi.com/standings?league=12&season=2023-2024';
-const options = {
-  method: 'GET',
-  headers: {
-    'X-RapidAPI-Key': 'c61023df98msh6f7beb0d10d6a8ep10dbc9jsn8be2ac7f5b08',
-    'X-RapidAPI-Host': 'api-basketball.p.rapidapi.com',
-  },
-};
+/* Gets API data, slices for the top 3 */
 
-fetch(url, options)
-  .then((response) => {
-    if (!response.ok) {
-      throw new Error('Network response was not ok');
+document.addEventListener('DOMContentLoaded', function() {
+
+    const url = 'https://api-basketball.p.rapidapi.com/standings?league=12&season=2023-2024';
+    const options = {
+        method: 'GET',
+        headers: {
+            'X-RapidAPI-Key': 'c61023df98msh6f7beb0d10d6a8ep10dbc9jsn8be2ac7f5b08',
+            'X-RapidAPI-Host': 'api-basketball.p.rapidapi.com',
+        },
+    };
+
+    fetch(url, options)
+    .then((response) => {
+        if (!response.ok) {
+            throw new Error('Network response was not okay XD');
+        }
+        return response.json();
+    })
+    .then((data) => {
+        const topTeams = data.response[0].slice(0, 3).map(team => {
+            if (team && team.team && team.team.name && team.team.logo) {
+                return {
+                    name: team.team.name,
+                    logo: team.team.logo,
+                    position: team.position,
+                };
+            } else {
+                return {
+                    name: "Unknown Team",
+                    logo: "path_to_default_logo.png",
+                    position: "N/A",
+                };
+            }
+        });
+        
+
+        displayTopTeams(topTeams);
+    })
+    .catch((error) => {
+        console.error('Issue (I am going to go insane):', error);
+    });
+
+    /* Appends the data to the elements */
+
+    function displayTopTeams(teams) {
+        const standingsBoxes = document.querySelectorAll('.standings-box');
+
+        teams.forEach((team, index) => {
+            const imgElement = standingsBoxes[index].querySelector('img');
+            const pElement = standingsBoxes[index].querySelector('.standings-name');
+
+            imgElement.src = team.logo;
+            imgElement.alt = `Team ${index + 1} Logo`;
+
+            pElement.textContent = `${team.position}. ${team.name}`;
+        });
     }
-    return response.json();
-  })
-  .then((data) => {
-    console.log(data);
-  })
-  .catch((error) => {
-    console.error('There was a problem with the fetch operation:', error);
-  });
+});
